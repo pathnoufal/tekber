@@ -1,0 +1,101 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    home: latih1(),
+  ));
+}
+
+class latih1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Latihan Flutter Pertama'),
+        ),
+        body: Center(
+          child: Container(
+              width: 400,
+              height: 500,
+              color: Colors.amber,
+              child: Column(
+                children: [
+                  Text(
+                    'SISTEM INFORMASI',
+                    style: TextStyle(
+                        fontSize: 25, color: Color.fromARGB(255, 5, 104, 185)),
+                  ),
+                  Text(
+                    'BABY BOZZ',
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: const Color.fromARGB(255, 249, 251, 251)),
+                  ),
+                  Container(
+                      height: 150,
+                      width: 150,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.asset('images/fotosaya.jpg'),
+                      )),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => tampil_list(),
+                            ));
+                      },
+                      child: Text(
+                        'Click menuju Halama 2',
+                        style: TextStyle(fontSize: 20),
+                      ))
+                ],
+              )),
+        ),
+      ),
+    );
+  }
+}
+
+class tampil_list extends StatelessWidget {
+  final nama_buah = [
+    "Mangga",
+    "Durian",
+    "Pisang",
+    "Pepaya",
+    "Jambu",
+    "Rambutan",
+    "Manggis",
+    "Duku",
+    "Naga",
+    "Klengkeng"
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Listview'),
+        ),
+        body: ListView.separated(
+          itemCount: nama_buah.length,
+          separatorBuilder: (context, index) {
+            return Divider();
+          },
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: Image.asset('images/fotosaya.jpg'),
+              title: Text(nama_buah[index]),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
